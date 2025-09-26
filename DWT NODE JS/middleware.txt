@@ -1,0 +1,96 @@
+						VIDEO 15
+middleware route will be like 
+
+
+// there res and req can be define with any variable but next variable name in route can not be changed 
+app.use((res,req,next)=>{
+  Your code ...
+  next()
+})
+
+Type of Middleware
+. Application-Level Middleware		// use for all routes in whole application
+. Router-Level Middleware	// we use middleware with router in express. can use in specific route
+. Error-handling Middleware	// if any route has error so we can handle error with it
+. Built-in Middleware		// bulit in middleware which are already in express 
+. Third-Party Middleware	// there are some packages which gives us some middleware that we can use
+
+--- there is website where are multiple middleware which we can use
+expressjs.comen/guide/writing-middleware.html
+
+// ye har route hit hony sy phly hit hoga then route ki main chz run hogi 
+0 = january
+1 = febuary
+2 = march
+3 = aprail
+more....
+
+app.use((req,res,next)=>{ 
+ console.log("Hello Bilal")
+ 
+ console.log(`${req.method} ${req.url}`) // it will return method like GET POST, and url return \about \home 
+
+  const d = new Date();
+  console.log(`Date: ${d.getDate} / ${d.getMonth}, Time : ${d.getHours} : ${d.getMinutes}`)
+ 
+ next()
+ })
+
+
+=== Name Middleware
+const mymiddleware = (req, res, next)=>{
+console.log("Hello Bilal")
+ 
+ console.log(`${req.method} ${req.url}`) // it will return method like GET POST, and url return \about \home 
+
+  const d = new Date();
+  console.log(`Date: ${d.getDate} / ${d.getMonth}, Time : ${d.getHours} : ${d.getMinutes}`)
+ 
+ next()
+}
+
+app.use(mymiddleware)  // we have to write app.use for run as middleware otherwise it will not work at all
+                          ab isky nichy jitny bh routes hongy ub sb pr ye use hoga automatic
+
+=== Use with pertciular route 
+-- particular ka liye esy likhny ki need nh hoti 
+       app.use(mymiddleware)   
+
+-- ye triqa use hota ha
+app.get('/about', mymiddleware , (req,res)=>{  })
+
+=== we can use mulitple middleware in single route as well
+
+app.get('/about', mymiddleware, myOtherMiddleware , (req,res)=>{  })
+
+
+
+
+
+
+================== Router-Level Middleware
+
+1. const express = require("express")
+2. const app = express();
+3. const router = express.Router();
+
+router.use((req, res, next)=>{
+ console.log("Hello Bilal")
+ next()
+})
+
+router.get('/about', mymiddleware , (req,res)=>{  })
+
+app.use('/', router);  // this will run my router and middleware as well otherwise router will not run as well
+
+
+
+
+
+
+================ Error Base Middleware
+-- ye sary routes ka sab sy last ma lgta ha 
+app.use((err, req, res, next)=>{
+ console.log("Error Base middleware")
+ next()
+})
