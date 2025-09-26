@@ -1,0 +1,19 @@
+1 npm install mongoose
+2 const mongoose = require('mongoose')
+
+// connect with db
+3 mongoose.connect('mongodb://127.0.0.1:27017/database-name') 
+
+// connect with collection and define schema
+4 const test = mongoose.model('User',
+	name: { type: String }, age: { type: Number }
+ );  
+
+
+db.contacts.insertOne({
+ first_name: "raza",
+ last_name: "MHD",
+ email: "razaMHD@gmail.com",
+ phone: "03132002002",
+ address: "#Karachi"
+})

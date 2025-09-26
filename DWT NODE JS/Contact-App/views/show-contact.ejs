@@ -1,0 +1,18 @@
+<%- include('partials/header.ejs') %>
+    <link rel="stylesheet" href="/form.css">
+    <div class="form-bg">
+        <h3> View Contact </h3>
+            <div class="form">
+                <input placeholder="First Name" value="<%= contact.first_name %>" name="form-fname" type="text" readonly>
+                <input placeholder="Last Number" value="<%= contact.last_name %>" name="form-lname" type="text" readonly>
+                <input placeholder="Email" value="<%= contact.email %>" name="form-email" type="text" readonly>
+                <input placeholder="Phone" value="<%= contact.phone %>" name="form-phone" type="text" readonly >
+                <input placeholder="Address ..." value="<%= contact.address %>" name="form-address" type="text" readonly>
+                <a href=".." class="btn btn-sm btn-outline-secondary" >Back</a>
+                <a href="/update-contact/<%= contact._id %>" class="btn btn-sm btn-outline-info">Edit</a>
+                <a href="/delete-contact/<%= contact._id %>" class="btn btn-sm btn-outline-danger" onclick="confirm('Are you sure?')">Delete</a>
+            </div>
+
+
+    </div>
+    <%- include('partials/footer.ejs') %>

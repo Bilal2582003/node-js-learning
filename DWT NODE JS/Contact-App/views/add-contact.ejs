@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs') %>
+    <link rel="stylesheet" href="/form.css">
+    <div class="form-bg">
+
+        <h3> Add New Contact </h3>
+        <form action="/add-contact" method="post">
+            <div class="form">
+                <input placeholder="First Name" name="form-fname" type="text" minlength="3" maxlength="16">
+                <input placeholder="Last Number" name="form-lname" type="text" minlength="3" maxlength="16">
+                <input placeholder="Email" name="form-email" type="email">
+                <input placeholder="Phone" name="form-phone" type="text"  maxlength="11">
+                <input placeholder="Address ..." name="form-address" type="text"  minlength="3" maxlength="1000">
+                <button type="submit" class="btn btn-sm btn-outline-info" >Save</button>
+                <a href=".." class="btn btn-sm btn-outline-secondary" >Back</a>
+            </div>
+        </form>
+
+
+    </div>
+    <%- include('partials/footer.ejs') %>

@@ -1,0 +1,57 @@
+res.send()	-> show text. html , json, object
+res.json()	-> show only json data
+res.jsonp()	-> show multi side data in json but not secure
+res.redirect()	-> send to any url 
+res.redirect('..')   	-> use for send to one old url
+res.download('./files/shortcuts/pdf', 'Document.pdf') 	-> use for download and second parameter use for use case
+res.sendFile(__dirname + '/files/shortcuts.pdf')	-> ye apko forcefully download nh karta ap khud select krty ho khn save karna ha
+res.end()	-> use for stop function or end programe
+res.headersSent()	-> it will show response send hogya ya nh
+res.set('custom-headerName', 'value')	->  set any variable
+res.get('custom-headerName')	-> get already setted variable value
+res.sendStatus(200)	-> it will show string according to status code
+
+server status code
+200 	ok
+201	created
+403	forbidden
+404	not found
+500	internal server error
+503	service unavailable
+504 	gateway timeout
+
+
+// Request properties and methods 
+req.params
+req.query
+req.body	-> use for send data in like JSON, from data/user
+req.cookies	-> use for temprarury data
+
+req.hostname		-> res.send(req.hostname) returns hostname like  localhost
+req.ip			-> res.send(req.ip)  returns ip
+req.ips			
+req.method
+req.originalUrl 	-> res.send(req.originalUrl) return our url after host name
+req.path		-> res.send(req.path) return our route name only
+req.protocol		-> res.send(req.protocol) return protocol like http, https
+req.secure		-> res.send(req.secure) return ture for htttps , flase for http
+req.route		-> res.send(req.route) return all details about routes
+req.headers		-> res.send(req.headers) return all details about header like cache control, host, connection, accept
+
+----- Mehtod
+req.accepts	-> it check req jo aaie ha vo kisko suport krta ha (HTML json xam)
+		req.accept('html')	-> it return true or false
+req.get		-> res.send(req.get("Accept"))	return ye kia kia accept kr skta ha
+req.is		-> req.is('application/json'), req.is('text/html') if yes so true otherwise false 
+req.range	->use for large data type like (videos , music)
+
+-- USE res.body ---
+  --- i have to send raw data (JSON) from postman
+app.use(express.json()) 	-> its means our response can send any json data
+app.pose('/about', (req, res)=>{ res.send(req.body) })
+
+ --- if want to use form data
+  --- i have to send form data from postman
+app.use(express.urlencoded({extended: flase}))
+app.post('./about', (req,res)=>{ res.send(req.body) })
+

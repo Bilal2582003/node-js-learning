@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+<link rel="stylesheet" href="/form.css" >
+    <div class="form-bg">
+
+        <h3> Update Contact </h3>
+        <form action="/update-contact/<%= contact._id %>" method="post">
+        <div class="form">
+            <input placeholder="First Name" value="<%= contact.first_name %>" name="form-fname" type="text" minlength="3" maxlength="16">
+                <input placeholder="Last Number" value="<%= contact.last_name %>" name="form-lname" type="text" minlength="3" maxlength="16">
+                <input placeholder="Email" value="<%= contact.email %>" name="form-email" type="email">
+                <input placeholder="Phone" value="<%= contact.phone %>" name="form-phone" type="text" maxlength="11">
+                <input placeholder="Address ..." value="<%= contact.address %>" name="form-address" type="text" minlength="3" maxlength="1000">
+
+
+            <button type="submit" class="btn btn-sm btn-outline-info ">Update</button>
+            <a href=".." class="btn btn-sm btn-outline-secondary" >Back</a>
+        </div>
+    </form>
+        
+
+    </div>
+    <%- include('partials/footer.ejs') %>

@@ -1,0 +1,62 @@
+it is template engine
+
+TAGS
+<% %>	-> Control flow, no output. 
+	<ul>
+	<% for(let i = 1;i<=3; i++){%>
+            <li>Item <% i %></li>
+	<% } %>
+<%= %>	-> Outputs escaped value (safe)
+<%- %>	-> Outputs unescaped value (unsafe)
+<%# %>	-> Comment (not shown in output)
+<% -%> 	-> Removes the following newline. aksar new line automatic ajati ha essy nh aygi
+<%_ %>	-> Removes whitespace before it 
+<% _%>	-> Removes all whitspace after it
+
+-- send to html file in ejs
+app.get('/about', (res, req)=>{ res.render('about') })
+
+
+-- if statement
+<% if(message){ %>
+ <h1>Hello yes if run</h1>
+<% } %>
+
+
+-- Loop
+<ul>
+ <% let items = ["APPLE", "ALI", "PAER"] %>   <!-- set variable -->
+ <% items.foreach(item => { %> 		<!-- start loop -->
+	<li> <%= item _%> </li>  	<!-- show values -->
+ <% }) %>
+</ul>
+
+-- form submition
+route file ma 1 middleware add krna hota h
+app.use(express.urlencoded({extended: false}))
+app.get('form', (req.res)=>{ res.render('form') })
+
+<form action="/submit" method="POST">
+ <input name="name">
+ <input type="submit" >
+</form>
+
+app.post('/submit', (req,res)=>{ 
+ const name = req.body.name
+ res.send(name)
+ })
+
+
+-- Partials
+<%- include('header') -%>   // it include a ejs file
+
+
+-- include css, file images
+public directory bnygi esma sb rkhy jaengy
+public -> style.css
+
+we have to use middleware for static files
+app.use(express.static('public'))
+now use like it <link  rel="stylesheet" href="/style.css" >  now it will directly file into public folder 
+
+
