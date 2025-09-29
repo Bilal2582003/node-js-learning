@@ -1,0 +1,54 @@
+File upload with Multer
+1. Storage
+    Destination
+    filename
+2. Limits
+    fileSize (bytes)
+    files   (can upload multiple files, can restrick max file)
+    fields  ()
+    filedNameSize
+3. File Filter (can restrick file type "png, txt")
+
+
+1. npm install multer
+2. const multer = require('multer')
+   const path = require('path')
+3. const storage = multer.diskStorage({
+
+    // here we define which
+    destination : function(req, file, cb){
+        cb(null, './uploads')  will image save
+    },
+
+    // here we rename file
+    filename: function (req, file, cb){
+        const newFileName = Date.now() + path.extname(file.originalname)
+        cb(null, newFileName)
+    }
+
+})
+
+4. const limits = {
+     fileSize: 1024 * 1024 * 5
+}
+
+5. const upload = multer({
+    storage: storage,
+    limits: limits
+})
+
+// for single file
+app.post('/submitform', upload.single('imagefile'), (req,res){
+    res.send(req.file)
+})
+
+// for multiple file
+app.post('/submitform', upload.array('imagefile', 5), (req,res){
+    res.send(req.file)
+})
+
+// if multiple fields sy files ayen to 
+app.post('/submitform', upload.fields([
+{name: 'profilePic', maxCount: 1},
+{name: 'documents', maxCount: 3}
+]) )
